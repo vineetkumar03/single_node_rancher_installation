@@ -1,0 +1,17 @@
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://docker.registry.server"
+    rewrite:
+      "^rancher/(.*)": "/rancher/$1"   ## Replace from any rancher.io nameserver to chub.cloud.gov.in/rancher  
+      "^docker/(.*)": "/rancher/$1"    
+      "^git/(.*)": "/rancher/$1"    
+      "^k8s/(.*)": "/rancher/$1"    
+configs:
+  "Registry":
+    auth:
+      username: admin # this is the registry username
+      password: *********
+    tls:
+      cert_file: /etc/rancher/k3s/fullchain.pem # path to the cert file used in the registry
+      key_file: /etc/rancher/k3s/privkey.key  # path to the key file used in the regis
